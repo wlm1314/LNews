@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    dataBinding {
+        enabled true
+    }
+    defaultConfig {
+        applicationId "com.wsy.lvnews"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    //support
+    compile "com.android.support:appcompat-v7:$supportLibVersion"
+    compile "com.android.support:support-v4:$supportLibVersion"
+    compile "com.android.support:design:$supportLibVersion"
+    compile "com.android.support:cardview-v7:$supportLibVersion"
+    //retrofit
+    compile "com.squareup.retrofit2:retrofit:$retrofitLibVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitLibVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitLibVersion"
+    //dagger2
+    apt "com.google.dagger:dagger-compiler:$daggerLibVersion"
+    compile "com.google.dagger:dagger:$daggerLibVersion"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    //databinding
+    compile project(':databinding')
+    apt 'com.android.databinding:compiler:2.2.3'
+    compile project(':magicindicator')
+
+}
+repositories {
+    mavenCentral()
+}
+

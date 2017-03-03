@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers"/>
+        <variable name="viewModel" type="com.wsy.lvnews.main.viewmodel.NewsViewModel"/>
+    </data>
+
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+        <TextView style="@style/CommonBase"
+                  android:layout_gravity="center"
+                  android:drawablePadding="@dimen/dimen_10"
+                  android:drawableTop="@mipmap/empty"
+                  android:text="@{viewModel.emptyText}"
+                  android:visibility="@{viewModel.isEmpty?View.VISIBLE:View.GONE}"/>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefreshCommand="@{viewModel.refreshCommand}"
+            app:refreshStatus="@{viewModel.refresh}">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                app:itemView="@{viewModel.itemView}"
+                app:items="@{viewModel.newsViewModel}"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:onLoadMoreCommand="@{viewModel.loadMoreCommand}"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </FrameLayout>
+
+</layout>

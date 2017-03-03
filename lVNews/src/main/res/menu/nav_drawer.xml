@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@mipmap/icon_news"
+            android:title="新闻精选"/>
+        <item
+            android:id="@+id/nav_joke"
+            android:icon="@mipmap/icon_joke"
+            android:title="轻松一刻"/>
+        <item
+            android:id="@+id/nav_pic"
+            android:icon="@mipmap/icon_pic"
+            android:title="每日美图"/>
+    </group>
+
+    <item android:title="其他">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@mipmap/icon_share"
+                android:title="软件分享"/>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/icon_about"
+                android:title="软件关于"/>
+        </menu>
+    </item>
+</menu>

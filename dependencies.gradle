@@ -1,0 +1,10 @@
+ext {
+    compileSdkVersion = 25
+    minSdkVersion = 15
+    targetSdkVersion = 22
+    buildToolsVersion = '25.0.2'
+    daggerLibVersion = "2.7"
+    supportLibVersion = "25.2.0"
+    retrofitLibVersion = "2.1.0"
+    okhttpLibVersion = "3.4.2"
+}
